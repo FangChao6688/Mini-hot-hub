@@ -1,0 +1,58 @@
+{
+  "platforms": [
+    {
+      "source": "weibo",
+      "sourceName": "微博",
+      "listName": "热搜榜",
+      "updatedAt": "2026-06-25T08:00:00.000Z",
+      "items": [
+        { "rank": 1, "title": "端午假期旅游热度持续攀升", "heat": "892万", "url": "https://s.weibo.com/weibo?q=端午假期旅游" },
+        { "rank": 2, "title": "多地迎来强降雨天气", "heat": "654万", "url": "https://s.weibo.com/weibo?q=强降雨天气" },
+        { "rank": 3, "title": "AI 助手走进日常生活", "heat": "521万", "url": "https://s.weibo.com/weibo?q=AI助手" },
+        { "rank": 4, "title": "高校毕业生就业季启动", "heat": "438万", "url": "https://s.weibo.com/weibo?q=毕业生就业季" },
+        { "rank": 5, "title": "新能源汽车销量创新高", "heat": "367万", "url": "https://s.weibo.com/weibo?q=新能源汽车销量" },
+        { "rank": 6, "title": "夏季防晒攻略引热议", "heat": "298万", "url": "https://s.weibo.com/weibo?q=夏季防晒" },
+        { "rank": 7, "title": "国产科幻电影定档暑期", "heat": "245万", "url": "https://s.weibo.com/weibo?q=国产科幻电影" },
+        { "rank": 8, "title": "城市夜经济活力十足", "heat": "198万", "url": "https://s.weibo.com/weibo?q=夜经济" },
+        { "rank": 9, "title": "健康饮食成为年轻人新趋势", "heat": "156万", "url": "https://s.weibo.com/weibo?q=健康饮食" },
+        { "rank": 10, "title": "全民健身日活动预告", "heat": "112万", "url": "https://s.weibo.com/weibo?q=全民健身日" }
+      ]
+    },
+    {
+      "source": "zhihu",
+      "sourceName": "知乎",
+      "listName": "热榜",
+      "updatedAt": "2026-06-25T08:00:00.000Z",
+      "items": [
+        { "rank": 1, "title": "如何评价最新一轮大模型技术竞赛？", "heat": "580 万热度", "url": "https://www.zhihu.com/question/mock-zhihu-1" },
+        { "rank": 2, "title": "程序员如何保持长期学习效率？", "heat": "412 万热度", "url": "https://www.zhihu.com/question/mock-zhihu-2" },
+        { "rank": 3, "title": "为什么越来越多人选择远程办公？", "heat": "356 万热度", "url": "https://www.zhihu.com/question/mock-zhihu-3" },
+        { "rank": 4, "title": "有哪些值得推荐的开源项目？", "heat": "289 万热度", "url": "https://www.zhihu.com/question/mock-zhihu-4" },
+        { "rank": 5, "title": "普通人应该如何规划个人理财？", "heat": "234 万热度", "url": "https://www.zhihu.com/question/mock-zhihu-5" },
+        { "rank": 6, "title": "夏季旅行有哪些小众目的地？", "heat": "198 万热度", "url": "https://www.zhihu.com/question/mock-zhihu-6" },
+        { "rank": 7, "title": "如何理解当前房地产市场走势？", "heat": "167 万热度", "url": "https://www.zhihu.com/question/mock-zhihu-7" },
+        { "rank": 8, "title": "职场新人怎样快速融入团队？", "heat": "143 万热度", "url": "https://www.zhihu.com/question/mock-zhihu-8" },
+        { "rank": 9, "title": "为什么睡眠质量问题越来越普遍？", "heat": "121 万热度", "url": "https://www.zhihu.com/question/mock-zhihu-9" },
+        { "rank": 10, "title": "有哪些提升专注力的实用方法？", "heat": "98 万热度", "url": "https://www.zhihu.com/question/mock-zhihu-10" }
+      ]
+    },
+    {
+      "source": "bilibili",
+      "sourceName": "哔哩哔哩",
+      "listName": "全站热搜",
+      "updatedAt": "2026-06-25T08:00:00.000Z",
+      "items": [
+        { "rank": 1, "title": "【测评】今夏最值得入手的轻薄本", "heat": "326万", "url": "https://www.bilibili.com/video/mock-bili-1" },
+        { "rank": 2, "title": "一口气看完经典悬疑系列解说", "heat": "278万", "url": "https://www.bilibili.com/video/mock-bili-2" },
+        { "rank": 3, "title": "手工 UP 主挑战七天造木船", "heat": "245万", "url": "https://www.bilibili.com/video/mock-bili-3" },
+        { "rank": 4, "title": "游戏新作实机演示全网首发", "heat": "212万", "url": "https://www.bilibili.com/video/mock-bili-4" },
+        { "rank": 5, "title": "十分钟学会做正宗麻婆豆腐", "heat": "189万", "url": "https://www.bilibili.com/video/mock-bili-5" },
+        { "rank": 6, "title": "街头采访：年轻人最想要的超能力", "heat": "164万", "url": "https://www.bilibili.com/video/mock-bili-6" },
+        { "rank": 7, "title": "数码区年度好物大盘点", "heat": "142万", "url": "https://www.bilibili.com/video/mock-bili-7" },
+        { "rank": 8, "title": "动画区新番导视：暑期档前瞻", "heat": "128万", "url": "https://www.bilibili.com/video/mock-bili-8" },
+        { "rank": 9, "title": "音乐区翻唱：治愈系民谣合集", "heat": "105万", "url": "https://www.bilibili.com/video/mock-bili-9" },
+        { "rank": 10, "title": "知识区：五分钟了解量子计算", "heat": "89万", "url": "https://www.bilibili.com/video/mock-bili-10" }
+      ]
+    }
+  ]
+}

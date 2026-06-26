@@ -1,0 +1,119 @@
+import { getCache, setCache } from '../utils/cache.js';
+import { fetchBilibiliHot } from './bilibili.js';
+import { fetchWeiboHot } from './weibo.js';
+import { fetchZhihuHot } from './zhihu.js';
+import type { HotAggregateResponse, HotPlatform, HotSource } from '../types/hot.js';
+import { HOT_SOURCES } from '../types/hot.js';
+
+type PlatformFetcher = () => HotPlatform | Promise<HotPlatform>;
+
+export interface FetchHotOptions {
+  skipCache?: boolean;
+}
+
+export interface FetchHotResult {
+  platform: HotPlatform;
+  cacheHit: boolean;
+}
+
+const PLATFORM_META: Record<HotSource, { sourceName: string; listName: string }> = {
+  weibo: { sourceName: '微博', listName: '热搜榜' },
+  zhihu: { sourceName: '知乎', listName: '热榜' },
+  bilibili: { sourceName: '哔哩哔哩', listName: '全站热搜' },
+};
+
+const FALLBACK_ERROR_MESSAGE: Record<HotSource, string> = {
+  weibo: '微博热搜加载失败，请稍后重试',
+  zhihu: '知乎热榜加载失败，请稍后重试',
+  bilibili: 'B 站热搜加载失败，请稍后重试',
+};
+
+/** 开发环境模拟单平台失败，生产环境始终忽略 */
+const MOCK_FAIL_ENV: Record<HotSource, string> = {
+  weibo: 'MOCK_FAIL_WEIBO',
+  zhihu: 'MOCK_FAIL_ZHIHU',
+  bilibili: 'MOCK_FAIL_BILIBILI',
+};
+
+function isMockFailEnabled(source: HotSource): boolean {
+  if (process.env.NODE_ENV === 'production') {
+    return false;
+  }
+
+  return process.env[MOCK_FAIL_ENV[source]] === '1';
+}
+
+function createMockFailPlatform(source: HotSource): HotPlatform {
+  console.warn(`[mock fail] ${source} — 已启用 ${MOCK_FAIL_ENV[source]}=1`);
+  return createErrorPlatform(source, `${FALLBACK_ERROR_MESSAGE[source]}（开发模拟失败）`);
+}
+
+export const platformFetchers: Record<HotSource, PlatformFetcher> = {
+  weibo: fetchWeiboHot,
+  zhihu: fetchZhihuHot,
+  bilibili: fetchBilibiliHot,
+};
+
+function cacheKey(source: HotSource): string {
+  return `hot:${source}`;
+}
+
+function createErrorPlatform(source: HotSource, message: string): HotPlatform {
+  const meta = PLATFORM_META[source];
+
+  return {
+    source,
+    sourceName: meta.sourceName,
+    listName: meta.listName,
+    updatedAt: new Date().toISOString(),
+    items: [],
+    error: true,
+    message,
+  };
+}
+
+async function loadPlatform(source: HotSource): Promise<HotPlatform> {
+  try {
+    return await platformFetchers[source]();
+  } catch (error) {
+    console.error(`[${source}]`, error instanceof Error ? error.message : error);
+    return createErrorPlatform(source, FALLBACK_ERROR_MESSAGE[source]);
+  }
+}
+
+export async function fetchHotBySource(
+  source: HotSource,
+  options?: FetchHotOptions,
+): Promise<FetchHotResult> {
+  if (isMockFailEnabled(source)) {
+    return { platform: createMockFailPlatform(source), cacheHit: false };
+  }
+
+  const key = cacheKey(source);
+
+  if (!options?.skipCache) {
+    const cached = getCache<HotPlatform>(key);
+    if (cached) {
+      return { platform: cached, cacheHit: true };
+    }
+  }
+
+  const platform = await loadPlatform(source);
+
+  if (!platform.error) {
+    setCache(key, platform);
+  }
+
+  return { platform, cacheHit: false };
+}
+
+/** 并行拉取各平台，单路失败不影响其余平台（失败项带 error: true） */
+export async function fetchAllHot(options?: FetchHotOptions): Promise<HotAggregateResponse> {
+  const results = await Promise.all(
+    HOT_SOURCES.map((source) => fetchHotBySource(source, options)),
+  );
+
+  return {
+    platforms: results.map((result) => result.platform),
+  };
+}

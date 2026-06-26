@@ -1,0 +1,36 @@
+.footer {
+  text-align: center;
+  padding: 1.25rem 1rem 2rem;
+  font-size: 0.8125rem;
+  color: #94a3b8;
+}
+
+.line,
+.contact {
+  margin: 0;
+  max-width: 36rem;
+  margin-inline: auto;
+  line-height: 1.65;
+}
+
+.line + .line,
+.line + .contact,
+.contact {
+  margin-top: 0.35rem;
+}
+
+.contact {
+  font-size: 0.75rem;
+  color: #b0b8c4;
+}
+
+.contactLink {
+  margin-left: 0.25rem;
+  color: #8b95a5;
+  text-decoration: none;
+}
+
+.contactLink:hover {
+  color: #3b82f6;
+  text-decoration: underline;
+}

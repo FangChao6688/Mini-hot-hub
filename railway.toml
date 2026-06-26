@@ -1,0 +1,8 @@
+# Railway 从仓库根目录部署后端时使用。
+# 若将 Service 的 Root Directory 设为 server/，可删除本文件，改用 server 内默认 npm build / npm start。
+
+[build]
+buildCommand = "npm run build:server"
+
+[deploy]
+startCommand = "npm run start:server"
