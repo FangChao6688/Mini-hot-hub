@@ -1,4 +1,4 @@
-import type { HotAggregateResponse, HotPlatform, HotSource } from '../types/hot';
+import type { HotAggregateResponse, HotCategory, HotPlatform, HotSource } from '../types/hot';
 
 const API_BASE = import.meta.env.VITE_API_BASE ?? '';
 
@@ -20,7 +20,15 @@ export async function fetchHotPlatform(
   return request<HotPlatform>(`/api/hot/${source}${query}`);
 }
 
-export async function fetchAllHot(options?: { refresh?: boolean }): Promise<HotAggregateResponse> {
-  const query = options?.refresh ? '?refresh=1' : '';
-  return request<HotAggregateResponse>(`/api/hot${query}`);
+export async function fetchHotByCategory(
+  category: HotCategory,
+  options?: { refresh?: boolean },
+): Promise<HotAggregateResponse> {
+  const params = new URLSearchParams({ category });
+
+  if (options?.refresh) {
+    params.set('refresh', '1');
+  }
+
+  return request<HotAggregateResponse>(`/api/hot?${params.toString()}`);
 }

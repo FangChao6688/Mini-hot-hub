@@ -1,14 +1,15 @@
 import { Router } from 'express';
-import { fetchAllHot, fetchHotBySource } from '../services/index.js';
-import { isHotSource } from '../types/hot.js';
+import { fetchHotByCategory, fetchHotBySource } from '../services/index.js';
+import { isHotSource, resolveHotCategory } from '../types/hot.js';
 
 export const hotRouter = Router();
 
 const isDev = process.env.NODE_ENV !== 'production';
 
 hotRouter.get('/', async (req, res) => {
+  const category = resolveHotCategory(req.query.category);
   const skipCache = isDev && req.query.refresh === '1';
-  res.json(await fetchAllHot({ skipCache }));
+  res.json(await fetchHotByCategory(category, { skipCache }));
 });
 
 hotRouter.get('/:source', async (req, res) => {

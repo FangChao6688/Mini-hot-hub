@@ -1,9 +1,13 @@
 import { HotCard } from '../components/HotCard';
 import { SiteFooter } from '../components/SiteFooter';
-import { PLATFORM_META, PLATFORM_ORDER } from '../constants/platforms';
+import { CATEGORY_META, getPlatformOrder, PLATFORM_META } from '../constants/platforms';
 import { useHotList } from '../hooks/useHotList';
-import type { HotPlatform, HotSource } from '../types/hot';
+import type { HotCategory, HotPlatform, HotSource } from '../types/hot';
 import styles from './Home.module.css';
+
+interface HomeProps {
+  category: HotCategory;
+}
 
 function createPlaceholder(source: HotSource): HotPlatform {
   const meta = PLATFORM_META[source];
@@ -16,12 +20,12 @@ function createPlaceholder(source: HotSource): HotPlatform {
   };
 }
 
-const PLACEHOLDER_PLATFORMS = PLATFORM_ORDER.map(createPlaceholder);
-
-export function Home() {
+export function Home({ category }: HomeProps) {
   const { platforms, loading, refreshingAll, error, loadingSources, reload, retryPlatform } =
-    useHotList();
+    useHotList(category);
 
+  const meta = CATEGORY_META[category];
+  const placeholderPlatforms = getPlatformOrder(category).map(createPlaceholder);
   const showRefreshButton = !loading;
 
   return (
@@ -29,8 +33,8 @@ export function Home() {
       <header className={styles.header}>
         <div className={styles.headerInner}>
           <div className={styles.headerText}>
-            <h1 className={styles.title}>迷你今日热榜</h1>
-            <p className={styles.intro}>聚合微博、知乎、B 站热榜，一览今日热点</p>
+            <h1 className={styles.title}>{meta.title}</h1>
+            <p className={styles.intro}>{meta.intro}</p>
           </div>
           {showRefreshButton && (
             <button
@@ -52,7 +56,7 @@ export function Home() {
       <main className={styles.main}>
         {loading ? (
           <div className={styles.grid}>
-            {PLACEHOLDER_PLATFORMS.map((platform) => (
+            {placeholderPlatforms.map((platform) => (
               <HotCard key={platform.source} loading data={platform} />
             ))}
           </div>

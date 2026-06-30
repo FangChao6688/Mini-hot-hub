@@ -1,0 +1,14 @@
+.app {
+  min-height: 100vh;
+}
+
+.switchBar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 1.25rem 0;
+  background: linear-gradient(180deg, rgba(240, 244, 255, 0.96) 0%, rgba(240, 244, 255, 0) 100%);
+  backdrop-filter: blur(8px);
+}

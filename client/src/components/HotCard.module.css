@@ -46,6 +46,24 @@
   --card-accent-muted: #fff1f5;
 }
 
+.card_ths {
+  --card-accent: #e62e2e;
+  --card-accent-soft: rgba(230, 46, 46, 0.12);
+  --card-accent-muted: #fff1f2;
+}
+
+.card_xueqiu {
+  --card-accent: #0077ff;
+  --card-accent-soft: rgba(0, 119, 255, 0.1);
+  --card-accent-muted: #eff6ff;
+}
+
+.card_cls {
+  --card-accent: #c41e3a;
+  --card-accent-soft: rgba(196, 30, 58, 0.1);
+  --card-accent-muted: #fff1f2;
+}
+
 .header {
   flex-shrink: 0;
   padding: 1.125rem 1.25rem 0.875rem;
