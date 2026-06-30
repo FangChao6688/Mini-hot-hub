@@ -1,8 +1,13 @@
-# Railway 从仓库根目录部署后端时使用。
-# 若将 Service 的 Root Directory 设为 server/，可删除本文件，改用 server 内默认 npm build / npm start。
+# Railway 从仓库根目录部署后端
+# Service Root Directory 留空（仓库根）即可读取本文件
 
 [build]
 buildCommand = "npm run build:server"
 
 [deploy]
 startCommand = "npm run start:server"
+healthcheckPath = "/api/health"
+healthcheckTimeout = 120
+
+[environments.production]
+variables = { NODE_ENV = "production", CORS_ORIGIN = "https://client-pi-kohl-13.vercel.app" }
