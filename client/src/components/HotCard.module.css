@@ -46,6 +46,12 @@
   --card-accent-muted: #fff1f5;
 }
 
+.card_xhs {
+  --card-accent: #ff2442;
+  --card-accent-soft: rgba(255, 36, 66, 0.12);
+  --card-accent-muted: #fff1f2;
+}
+
 .card_ths {
   --card-accent: #e62e2e;
   --card-accent-soft: rgba(230, 46, 46, 0.12);
@@ -62,6 +68,12 @@
   --card-accent: #c41e3a;
   --card-accent-soft: rgba(196, 30, 58, 0.1);
   --card-accent-muted: #fff1f2;
+}
+
+.card_caixin {
+  --card-accent: #1a5fb4;
+  --card-accent-soft: rgba(26, 95, 180, 0.1);
+  --card-accent-muted: #eff6ff;
 }
 
 .header {

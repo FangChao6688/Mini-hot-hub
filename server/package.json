@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "xhshow-js": "^1.0.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.18",

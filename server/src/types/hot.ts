@@ -1,7 +1,7 @@
 export type HotCategory = 'news' | 'finance';
 
-export type NewsHotSource = 'weibo' | 'zhihu' | 'bilibili';
-export type FinanceHotSource = 'ths' | 'xueqiu' | 'cls';
+export type NewsHotSource = 'weibo' | 'zhihu' | 'xhs' | 'bilibili';
+export type FinanceHotSource = 'ths' | 'xueqiu' | 'cls' | 'caixin';
 export type HotSource = NewsHotSource | FinanceHotSource;
 
 export interface HotItem {
@@ -26,8 +26,8 @@ export interface HotAggregateResponse {
   platforms: HotPlatform[];
 }
 
-export const NEWS_HOT_SOURCES: NewsHotSource[] = ['weibo', 'zhihu', 'bilibili'];
-export const FINANCE_HOT_SOURCES: FinanceHotSource[] = ['ths', 'xueqiu', 'cls'];
+export const NEWS_HOT_SOURCES: NewsHotSource[] = ['weibo', 'zhihu', 'xhs', 'bilibili'];
+export const FINANCE_HOT_SOURCES: FinanceHotSource[] = ['ths', 'xueqiu', 'cls', 'caixin'];
 export const HOT_SOURCES: HotSource[] = [...NEWS_HOT_SOURCES, ...FINANCE_HOT_SOURCES];
 
 export function isHotSource(value: string): value is HotSource {

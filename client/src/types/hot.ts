@@ -1,7 +1,7 @@
 export type HotCategory = 'news' | 'finance';
 
-export type NewsHotSource = 'weibo' | 'zhihu' | 'bilibili';
-export type FinanceHotSource = 'ths' | 'xueqiu' | 'cls';
+export type NewsHotSource = 'weibo' | 'zhihu' | 'xhs' | 'bilibili';
+export type FinanceHotSource = 'ths' | 'xueqiu' | 'cls' | 'caixin';
 export type HotSource = NewsHotSource | FinanceHotSource;
 
 export interface HotItem {

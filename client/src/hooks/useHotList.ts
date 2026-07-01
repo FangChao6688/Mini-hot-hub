@@ -28,10 +28,12 @@ function createErrorPlatform(source: HotSource, message: string): HotPlatform {
 const RETRY_ERROR_MESSAGE: Record<HotSource, string> = {
   weibo: '微博热搜加载失败，请稍后重试',
   zhihu: '知乎热榜加载失败，请稍后重试',
+  xhs: '小红书热搜加载失败，请稍后重试',
   bilibili: 'B 站热搜加载失败，请稍后重试',
   ths: '同花顺热股榜加载失败，请稍后重试',
   xueqiu: '雪球热股榜加载失败，请稍后重试',
   cls: '财联社热榜加载失败，请稍后重试',
+  caixin: '财新热门文章加载失败，请稍后重试',
 };
 
 interface UseHotListResult {

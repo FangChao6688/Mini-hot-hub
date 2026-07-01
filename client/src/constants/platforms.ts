@@ -1,7 +1,7 @@
 import type { HotCategory, HotSource } from '../types/hot';
 
-export const NEWS_PLATFORM_ORDER: HotSource[] = ['weibo', 'zhihu', 'bilibili'];
-export const FINANCE_PLATFORM_ORDER: HotSource[] = ['ths', 'xueqiu', 'cls'];
+export const NEWS_PLATFORM_ORDER: HotSource[] = ['weibo', 'zhihu', 'xhs', 'bilibili'];
+export const FINANCE_PLATFORM_ORDER: HotSource[] = ['ths', 'xueqiu', 'cls', 'caixin'];
 
 export const PLATFORM_ORDER_BY_CATEGORY: Record<HotCategory, HotSource[]> = {
   news: NEWS_PLATFORM_ORDER,
@@ -11,10 +11,12 @@ export const PLATFORM_ORDER_BY_CATEGORY: Record<HotCategory, HotSource[]> = {
 export const PLATFORM_META: Record<HotSource, { sourceName: string; listName: string }> = {
   weibo: { sourceName: '微博', listName: '热搜榜' },
   zhihu: { sourceName: '知乎', listName: '热榜' },
+  xhs: { sourceName: '小红书', listName: '热搜榜' },
   bilibili: { sourceName: 'B 站', listName: '全站热门' },
   ths: { sourceName: '同花顺', listName: '热股榜' },
   xueqiu: { sourceName: '雪球', listName: '热股榜' },
   cls: { sourceName: '财联社', listName: '热门文章' },
+  caixin: { sourceName: '财新', listName: '热门文章' },
 };
 
 export const CATEGORY_META: Record<
@@ -23,12 +25,12 @@ export const CATEGORY_META: Record<
 > = {
   news: {
     title: '迷你今日热榜',
-    intro: '聚合微博、知乎、B 站热榜，一览今日热点',
+    intro: '聚合微博、知乎、小红书、B 站热榜，一览今日热点',
     pageLabel: '资讯',
   },
   finance: {
     title: '今日暴富热榜',
-    intro: '聚合同花顺、雪球、财联社热榜，一览今日金融热点',
+    intro: '聚合同花顺、雪球、财联社、财新热榜，一览今日金融热点',
     pageLabel: '财经',
   },
 };
@@ -40,10 +42,12 @@ export const PLATFORM_THEME: Record<
 > = {
   weibo: { accent: '#ff6a00', accentSoft: 'rgba(255, 106, 0, 0.12)', accentMuted: '#fff7ed' },
   zhihu: { accent: '#0066ff', accentSoft: 'rgba(0, 102, 255, 0.1)', accentMuted: '#eff6ff' },
+  xhs: { accent: '#ff2442', accentSoft: 'rgba(255, 36, 66, 0.12)', accentMuted: '#fff1f2' },
   bilibili: { accent: '#fb7299', accentSoft: 'rgba(251, 114, 153, 0.12)', accentMuted: '#fff1f5' },
   ths: { accent: '#e62e2e', accentSoft: 'rgba(230, 46, 46, 0.12)', accentMuted: '#fff1f2' },
   xueqiu: { accent: '#0077ff', accentSoft: 'rgba(0, 119, 255, 0.1)', accentMuted: '#eff6ff' },
   cls: { accent: '#c41e3a', accentSoft: 'rgba(196, 30, 58, 0.1)', accentMuted: '#fff1f2' },
+  caixin: { accent: '#1a5fb4', accentSoft: 'rgba(26, 95, 180, 0.1)', accentMuted: '#eff6ff' },
 };
 
 export function getPlatformOrder(category: HotCategory): HotSource[] {
